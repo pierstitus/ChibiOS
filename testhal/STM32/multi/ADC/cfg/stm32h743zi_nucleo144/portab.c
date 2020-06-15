@@ -59,7 +59,7 @@ void adcerrorcallback(ADCDriver *adcp, adcerror_t err);
 /*
  * ADC conversion group 1.
  * Mode:        One shot, 2 channels, SW triggered.
- * Channels:    IN0, IN5.
+ * Channels:    IN16, IN5.
  */
 const ADCConversionGroup portab_adcgrpcfg1 = {
   .circular     = false,
@@ -69,7 +69,7 @@ const ADCConversionGroup portab_adcgrpcfg1 = {
   .cfgr         = 0U,
   .cfgr2        = 0U,
   .ccr          = 0U,
-  .pcsel        = ADC_SELMASK_IN0 | ADC_SELMASK_IN5,
+  .pcsel        = ADC_SELMASK_IN16 | ADC_SELMASK_IN5,
   .ltr1         = 0x00000000U,
   .htr1         = 0x03FFFFFFU,
   .ltr2         = 0x00000000U,
@@ -77,12 +77,11 @@ const ADCConversionGroup portab_adcgrpcfg1 = {
   .ltr3         = 0x00000000U,
   .htr3         = 0x03FFFFFFU,
   .smpr         = {
-    ADC_SMPR1_SMP_AN0(ADC_SMPR_SMP_384P5) |
     ADC_SMPR1_SMP_AN5(ADC_SMPR_SMP_384P5),
-    0U
+    ADC_SMPR2_SMP_AN16(ADC_SMPR_SMP_384P5)
   },
   .sqr          = {
-    ADC_SQR1_SQ1_N(ADC_CHANNEL_IN0) | ADC_SQR1_SQ2_N(ADC_CHANNEL_IN5),
+    ADC_SQR1_SQ1_N(ADC_CHANNEL_IN16) | ADC_SQR1_SQ2_N(ADC_CHANNEL_IN5),
     0U,
     0U,
     0U
@@ -92,7 +91,7 @@ const ADCConversionGroup portab_adcgrpcfg1 = {
 /*
  * ADC conversion group 2.
  * Mode:        Continuous, 2 channels, HW triggered by GPT4-TRGO.
- * Channels:    IN0, IN5.
+ * Channels:    IN16, IN5.
  */
 const ADCConversionGroup portab_adcgrpcfg2 = {
   .circular     = true,
@@ -103,7 +102,7 @@ const ADCConversionGroup portab_adcgrpcfg2 = {
                   ADC_CFGR_EXTSEL_SRC(12),  /* TIM4_TRGO */
   .cfgr2        = 0U,
   .ccr          = 0U,
-  .pcsel        = ADC_SELMASK_IN0 | ADC_SELMASK_IN5,
+  .pcsel        = ADC_SELMASK_IN16 | ADC_SELMASK_IN5,
   .ltr1         = 0x00000000U,
   .htr1         = 0x03FFFFFFU,
   .ltr2         = 0x00000000U,
@@ -111,12 +110,11 @@ const ADCConversionGroup portab_adcgrpcfg2 = {
   .ltr3         = 0x00000000U,
   .htr3         = 0x03FFFFFFU,
   .smpr         = {
-    ADC_SMPR1_SMP_AN0(ADC_SMPR_SMP_384P5) |
     ADC_SMPR1_SMP_AN5(ADC_SMPR_SMP_384P5),
-    0U
+    ADC_SMPR2_SMP_AN16(ADC_SMPR_SMP_384P5)
   },
   .sqr          = {
-    ADC_SQR1_SQ1_N(ADC_CHANNEL_IN0) | ADC_SQR1_SQ2_N(ADC_CHANNEL_IN5),
+    ADC_SQR1_SQ1_N(ADC_CHANNEL_IN16) | ADC_SQR1_SQ2_N(ADC_CHANNEL_IN5),
     0U,
     0U,
     0U
