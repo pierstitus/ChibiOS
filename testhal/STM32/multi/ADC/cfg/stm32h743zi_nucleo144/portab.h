@@ -36,13 +36,17 @@
 #define PORTAB_LINE_BUTTON          LINE_BUTTON
 #define PORTAB_BUTTON_PRESSED       PAL_HIGH
 
-#define PORTAB_SD1                  SD2
+#define PORTAB_SD1                  SD3
 
 #define PORTAB_GPT1                 GPTD4
 #define PORTAB_ADC1                 ADCD1
 
 #define ADC_GRP1_NUM_CHANNELS       2
 #define ADC_GRP2_NUM_CHANNELS       2
+
+#define PORTAB_PRINT_SAMPLES1       chprintf((BaseSequentialStream *)&PORTAB_SD1, "one-shot: PA0: %5d, PB1: %5d\n", samples1[0], samples1[1]);
+#define PORTAB_PRINT_SAMPLES2       chprintf((BaseSequentialStream *)&PORTAB_SD1, "PA0: %5d, PB1: %5d\n", samples2[0], samples2[1]);
+
 
 /*===========================================================================*/
 /* Module pre-compile time settings.                                         */

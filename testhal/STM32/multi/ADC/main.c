@@ -20,6 +20,10 @@
 
 #include "portab.h"
 
+#if defined(PORTAB_PRINT_SAMPLES1) || defined(PORTAB_PRINT_SAMPLES2)
+#include "chprintf.h"
+#endif
+
 /*===========================================================================*/
 /* ADC driver related.                                                       */
 /*===========================================================================*/
@@ -126,6 +130,9 @@ int main(void) {
   /* Performing a one-shot conversion on two channels.*/
   adcConvert(&PORTAB_ADC1, &portab_adcgrpcfg1, samples1, ADC_GRP1_BUF_DEPTH);
   cacheBufferInvalidate(samples1, sizeof (samples1) / sizeof (adcsample_t));
+#if defined(PORTAB_PRINT_SAMPLES1)
+  PORTAB_PRINT_SAMPLES1
+#endif
 
   /*
    * Starting PORTAB_GPT1 driver, it is used for triggering the ADC.
@@ -150,6 +157,11 @@ int main(void) {
       adcStopConversion(&PORTAB_ADC1);
     }
     chThdSleepMilliseconds(500);
+
+    cacheBufferInvalidate(samples2, sizeof (samples2) / sizeof (adcsample_t));
+#if defined(PORTAB_PRINT_SAMPLES2)
+    PORTAB_PRINT_SAMPLES2
+#endif
   }
   return 0;
 }

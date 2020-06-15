@@ -142,6 +142,12 @@ void portab_setup(void) {
   /* ADC inputs.*/
   palSetPadMode(GPIOA, 0, PAL_MODE_INPUT_ANALOG);
   palSetPadMode(GPIOB, 1, PAL_MODE_INPUT_ANALOG);
+
+  /*
+   * Activates the serial driver using the driver default configuration.
+   */
+  sdStart(&PORTAB_SD1, NULL);
+
 }
 
 /** @} */
