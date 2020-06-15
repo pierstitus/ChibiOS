@@ -88,12 +88,18 @@ static THD_WORKING_AREA(waThread1, 128);
 static THD_FUNCTION(Thread1, arg) {
 
   (void)arg;
+  int delay=500;
   chRegSetThreadName("blinker");
   while (true) {
+    // let blink pulse width depend on continuous ADC value
+    cacheBufferInvalidate(samples2, sizeof (samples2) / sizeof (adcsample_t));
+    delay = samples2[0]/64;
+    if (delay <  10) delay =  10;
+    if (delay > 990) delay = 990;
     palSetLine(PORTAB_LINE_LED1);
-    chThdSleepMilliseconds(500);
+    chThdSleepMilliseconds(delay);
     palClearLine(PORTAB_LINE_LED1);
-    chThdSleepMilliseconds(500);
+    chThdSleepMilliseconds(1000-delay);
   }
 }
 
