@@ -44,9 +44,10 @@
 #define ADC_GRP1_NUM_CHANNELS       2
 #define ADC_GRP2_NUM_CHANNELS       2
 
-#define PORTAB_PRINT_SAMPLES1       chprintf((BaseSequentialStream *)&PORTAB_SD1, "one-shot: PC3 (A2): %5d, PB1 (A3): %5d\n", samples1[0], samples1[1]);
-#define PORTAB_PRINT_SAMPLES2       chprintf((BaseSequentialStream *)&PORTAB_SD1, "PC3 (A2): %5d, PB1 (A3): %5d\n", samples2[0], samples2[1]);
+#define PORTAB_PRINT_SAMPLES1       chprintf((BaseSequentialStream *)&PORTAB_SD1, "one-shot: PC0 (A1): %5d, PC2 (A4): %5d, DR1: 0x%08X, DR2: 0x%08X, CDR: 0x%08X\n", samples1[0], samples1[1], ADCD1.adcm->DR, ADCD1.adcs->DR, ADCD1.adcc->CDR);
+#define PORTAB_PRINT_SAMPLES2       chprintf((BaseSequentialStream *)&PORTAB_SD1, "PC0 (A1): %5d, PC2 (A4): %5d, DR1: 0x%08X, DR2: 0x%08X, CDR: 0x%08X\n", samples2[0], samples2[1], ADCD1.adcm->DR, ADCD1.adcs->DR, ADCD1.adcc->CDR);
 
+#define ADC_CFGR_RES_BITDEPTH       ADC_CFGR_RES_10BITS
 
 /*===========================================================================*/
 /* Module pre-compile time settings.                                         */
