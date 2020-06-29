@@ -67,7 +67,7 @@ const ADCConversionGroup portab_adcgrpcfg1 = {
   .num_channels = ADC_GRP1_NUM_CHANNELS,
   .end_cb       = NULL,
   .error_cb     = adcerrorcallback,
-  .cfgr         = 0U,
+  .cfgr         = ADC_CFGR_RES_BITDEPTH,
   .cfgr2        = 0U,
   .ccr          = 0U,
   .pcsel        = ADC_SELMASK_IN13 | ADC_SELMASK_IN5,
@@ -94,7 +94,7 @@ const ADCConversionGroup portab_adcgrpcfg1 = {
   .num_channels = ADC_GRP1_NUM_CHANNELS,
   .end_cb       = NULL,
   .error_cb     = adcerrorcallback,
-  .cfgr         = 0U,
+  .cfgr         = ADC_CFGR_RES_BITDEPTH,
   .cfgr2        = 0U,
   .ccr          = 6U, // ADC_CCR_DUAL_SIM
   .pcsel        = ADC_SELMASK_IN13 | ADC_SELMASK_IN5,
@@ -139,7 +139,8 @@ const ADCConversionGroup portab_adcgrpcfg2 = {
   .num_channels = ADC_GRP2_NUM_CHANNELS,
   .end_cb       = adccallback,
   .error_cb     = adcerrorcallback,
-  .cfgr         = ADC_CFGR_EXTEN_RISING |
+  .cfgr         = ADC_CFGR_RES_BITDEPTH |
+                  ADC_CFGR_EXTEN_RISING |
                   ADC_CFGR_EXTSEL_SRC(12),  /* TIM4_TRGO */
   .cfgr2        = 0U,
   .ccr          = 0U,
@@ -167,7 +168,8 @@ const ADCConversionGroup portab_adcgrpcfg2 = {
   .num_channels = ADC_GRP2_NUM_CHANNELS,
   .end_cb       = adccallback,
   .error_cb     = adcerrorcallback,
-  .cfgr         = ADC_CFGR_EXTEN_RISING |
+  .cfgr         = ADC_CFGR_RES_BITDEPTH |
+                  ADC_CFGR_EXTEN_RISING |
                   ADC_CFGR_EXTSEL_SRC(12),  /* TIM4_TRGO */
   .cfgr2        = 0U,
   .ccr          = 6U, // ADC_CCR_DUAL_SIM
