@@ -44,8 +44,8 @@
 #define ADC_GRP1_NUM_CHANNELS       2
 #define ADC_GRP2_NUM_CHANNELS       2
 
-#define PORTAB_PRINT_SAMPLES1       chprintf((BaseSequentialStream *)&PORTAB_SD1, "one-shot: PA0: %5d, PB1: %5d\n", samples1[0], samples1[1]);
-#define PORTAB_PRINT_SAMPLES2       chprintf((BaseSequentialStream *)&PORTAB_SD1, "PA0: %5d, PB1: %5d\n", samples2[0], samples2[1]);
+#define PORTAB_PRINT_SAMPLES1       chprintf((BaseSequentialStream *)&PORTAB_SD1, "one-shot: PC3 (A2): %5d, PB1 (A3): %5d\n", samples1[0], samples1[1]);
+#define PORTAB_PRINT_SAMPLES2       chprintf((BaseSequentialStream *)&PORTAB_SD1, "PC3 (A2): %5d, PB1 (A3): %5d\n", samples2[0], samples2[1]);
 
 
 /*===========================================================================*/

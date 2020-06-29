@@ -59,7 +59,7 @@ void adcerrorcallback(ADCDriver *adcp, adcerror_t err);
 /*
  * ADC conversion group 1.
  * Mode:        One shot, 2 channels, SW triggered.
- * Channels:    IN16, IN5.
+ * Channels:    IN13, IN5.
  */
 #if STM32_ADC_DUAL_MODE == FALSE
 const ADCConversionGroup portab_adcgrpcfg1 = {
@@ -70,7 +70,7 @@ const ADCConversionGroup portab_adcgrpcfg1 = {
   .cfgr         = 0U,
   .cfgr2        = 0U,
   .ccr          = 0U,
-  .pcsel        = ADC_SELMASK_IN16 | ADC_SELMASK_IN5,
+  .pcsel        = ADC_SELMASK_IN13 | ADC_SELMASK_IN5,
   .ltr1         = 0x00000000U,
   .htr1         = 0x03FFFFFFU,
   .ltr2         = 0x00000000U,
@@ -79,10 +79,10 @@ const ADCConversionGroup portab_adcgrpcfg1 = {
   .htr3         = 0x03FFFFFFU,
   .smpr         = {
     ADC_SMPR1_SMP_AN5(ADC_SMPR_SMP_384P5),
-    ADC_SMPR2_SMP_AN16(ADC_SMPR_SMP_384P5)
+    ADC_SMPR2_SMP_AN13(ADC_SMPR_SMP_384P5)
   },
   .sqr          = {
-    ADC_SQR1_SQ1_N(ADC_CHANNEL_IN16) | ADC_SQR1_SQ2_N(ADC_CHANNEL_IN5),
+    ADC_SQR1_SQ1_N(ADC_CHANNEL_IN13) | ADC_SQR1_SQ2_N(ADC_CHANNEL_IN5),
     0U,
     0U,
     0U
@@ -97,7 +97,7 @@ const ADCConversionGroup portab_adcgrpcfg1 = {
   .cfgr         = 0U,
   .cfgr2        = 0U,
   .ccr          = 6U, // ADC_CCR_DUAL_SIM
-  .pcsel        = ADC_SELMASK_IN16 | ADC_SELMASK_IN5,
+  .pcsel        = ADC_SELMASK_IN13 | ADC_SELMASK_IN5,
   .ltr1         = 0x00000000U,
   .htr1         = 0x03FFFFFFU,
   .ltr2         = 0x00000000U,
@@ -106,10 +106,10 @@ const ADCConversionGroup portab_adcgrpcfg1 = {
   .htr3         = 0x03FFFFFFU,
   .smpr         = {
     0U,
-    ADC_SMPR2_SMP_AN16(ADC_SMPR_SMP_384P5)
+    ADC_SMPR2_SMP_AN13(ADC_SMPR_SMP_384P5)
   },
   .sqr          = {
-    ADC_SQR1_SQ1_N(ADC_CHANNEL_IN16),
+    ADC_SQR1_SQ1_N(ADC_CHANNEL_IN13),
     0U,
     0U,
     0U
@@ -131,7 +131,7 @@ const ADCConversionGroup portab_adcgrpcfg1 = {
 /*
  * ADC conversion group 2.
  * Mode:        Continuous, 2 channels, HW triggered by GPT4-TRGO.
- * Channels:    IN16, IN5.
+ * Channels:    IN13, IN5.
  */
 #if STM32_ADC_DUAL_MODE == FALSE
 const ADCConversionGroup portab_adcgrpcfg2 = {
@@ -143,7 +143,7 @@ const ADCConversionGroup portab_adcgrpcfg2 = {
                   ADC_CFGR_EXTSEL_SRC(12),  /* TIM4_TRGO */
   .cfgr2        = 0U,
   .ccr          = 0U,
-  .pcsel        = ADC_SELMASK_IN16 | ADC_SELMASK_IN5,
+  .pcsel        = ADC_SELMASK_IN13 | ADC_SELMASK_IN5,
   .ltr1         = 0x00000000U,
   .htr1         = 0x03FFFFFFU,
   .ltr2         = 0x00000000U,
@@ -152,10 +152,10 @@ const ADCConversionGroup portab_adcgrpcfg2 = {
   .htr3         = 0x03FFFFFFU,
   .smpr         = {
     ADC_SMPR1_SMP_AN5(ADC_SMPR_SMP_384P5),
-    ADC_SMPR2_SMP_AN16(ADC_SMPR_SMP_384P5)
+    ADC_SMPR2_SMP_AN13(ADC_SMPR_SMP_384P5)
   },
   .sqr          = {
-    ADC_SQR1_SQ1_N(ADC_CHANNEL_IN16) | ADC_SQR1_SQ2_N(ADC_CHANNEL_IN5),
+    ADC_SQR1_SQ1_N(ADC_CHANNEL_IN13) | ADC_SQR1_SQ2_N(ADC_CHANNEL_IN5),
     0U,
     0U,
     0U
@@ -171,7 +171,7 @@ const ADCConversionGroup portab_adcgrpcfg2 = {
                   ADC_CFGR_EXTSEL_SRC(12),  /* TIM4_TRGO */
   .cfgr2        = 0U,
   .ccr          = 6U, // ADC_CCR_DUAL_SIM
-  .pcsel        = ADC_SELMASK_IN16 | ADC_SELMASK_IN5,
+  .pcsel        = ADC_SELMASK_IN13 | ADC_SELMASK_IN5,
   .ltr1         = 0x00000000U,
   .htr1         = 0x03FFFFFFU,
   .ltr2         = 0x00000000U,
@@ -180,10 +180,10 @@ const ADCConversionGroup portab_adcgrpcfg2 = {
   .htr3         = 0x03FFFFFFU,
   .smpr         = {
     0U,
-    ADC_SMPR2_SMP_AN16(ADC_SMPR_SMP_384P5)
+    ADC_SMPR2_SMP_AN13(ADC_SMPR_SMP_384P5)
   },
   .sqr          = {
-    ADC_SQR1_SQ1_N(ADC_CHANNEL_IN16),
+    ADC_SQR1_SQ1_N(ADC_CHANNEL_IN13),
     0U,
     0U,
     0U
@@ -220,7 +220,7 @@ const ADCConversionGroup portab_adcgrpcfg2 = {
 void portab_setup(void) {
 
   /* ADC inputs.*/
-  palSetPadMode(GPIOA, 0, PAL_MODE_INPUT_ANALOG);
+  palSetPadMode(GPIOC, 3, PAL_MODE_INPUT_ANALOG);
   palSetPadMode(GPIOB, 1, PAL_MODE_INPUT_ANALOG);
 
   /*
