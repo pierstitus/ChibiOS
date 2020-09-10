@@ -30,7 +30,7 @@
 /*===========================================================================*/
 
 #define PORTAB_LINE_LED1            LINE_LED1
-#define PORTAB_LINE_LED2            LINE_LED2
+#define PORTAB_LINE_LED2            LINE_LED3
 #define PORTAB_LED_OFF              PAL_LOW
 #define PORTAB_LED_ON               PAL_HIGH
 #define PORTAB_LINE_BUTTON          LINE_BUTTON
@@ -44,8 +44,13 @@
 #define ADC_GRP1_NUM_CHANNELS       2
 #define ADC_GRP2_NUM_CHANNELS       2
 
-#define PORTAB_PRINT_SAMPLES1       chprintf((BaseSequentialStream *)&PORTAB_SD1, "one-shot: PC0 (A1): %5d, PC2 (A4): %5d, DR1: 0x%08X, DR2: 0x%08X, CDR: 0x%08X\n", samples1[0], samples1[1], ADCD1.adcm->DR, ADCD1.adcs->DR, ADCD1.adcc->CDR);
-#define PORTAB_PRINT_SAMPLES2       chprintf((BaseSequentialStream *)&PORTAB_SD1, "PC0 (A1): %5d, PC2 (A4): %5d, DR1: 0x%08X, DR2: 0x%08X, CDR: 0x%08X\n", samples2[0], samples2[1], ADCD1.adcm->DR, ADCD1.adcs->DR, ADCD1.adcc->CDR);
+// #if STM32_ADC_DUAL_MODE == TRUE
+// #define PORTAB_PRINT_SAMPLES1       chprintf((BaseSequentialStream *)&PORTAB_SD1, "one-shot: PC0 (A1): %5d, PC2 (A4): %5d, %5d, %5d DR1: 0x%08X, DR2: 0x%08X, CDR: 0x%08X\n", samples1[0], samples1[1], samples1[2], samples1[3], PORTAB_ADC1.adcm->DR, PORTAB_ADC1.adcs->DR, PORTAB_ADC1.adcc->CDR);
+// #define PORTAB_PRINT_SAMPLES2       chprintf((BaseSequentialStream *)&PORTAB_SD1, "PC0 (A1): %5d, PC2 (A4): %5d, %5d, %5d, %5d, %5d DR1: 0x%08X, DR2: 0x%08X, CDR: 0x%08X\n", samples2[0], samples2[1], samples2[2], samples2[3], samples2[4], samples2[5], PORTAB_ADC1.adcm->DR, PORTAB_ADC1.adcs->DR, PORTAB_ADC1.adcc->CDR);
+// #else
+#define PORTAB_PRINT_SAMPLES1       chprintf((BaseSequentialStream *)&PORTAB_SD1, "one-shot: PC0 (A1): %5d, PC2 (A4): %5d, DR1: 0x%08X, CDR: 0x%08X\n", samples1[0], samples1[1], PORTAB_ADC1.adcm->DR, PORTAB_ADC1.adcc->CDR);
+#define PORTAB_PRINT_SAMPLES2       chprintf((BaseSequentialStream *)&PORTAB_SD1, "PC0 (A1): %5d, PC2 (A4): %5d, DR1: 0x%08X, CDR: 0x%08X\n", samples2[0], samples2[1], PORTAB_ADC1.adcm->DR, PORTAB_ADC1.adcc->CDR);
+// #endif
 
 #define ADC_CFGR_RES_BITDEPTH       ADC_CFGR_RES_10BITS
 

@@ -96,7 +96,7 @@ const ADCConversionGroup portab_adcgrpcfg1 = {
   .error_cb     = adcerrorcallback,
   .cfgr         = ADC_CFGR_RES_BITDEPTH,
   .cfgr2        = 0U,
-  .ccr          = 6U, // ADC_CCR_DUAL_SIM
+  .ccr          = ADC_CCR_DUAL_REG_SIMULT,
   .pcsel        = ADC_SELMASK_IN10 | ADC_SELMASK_IN12,
   .ltr1         = 0x00000000U,
   .htr1         = 0x03FFFFFFU,
@@ -172,7 +172,7 @@ const ADCConversionGroup portab_adcgrpcfg2 = {
                   ADC_CFGR_EXTEN_RISING |
                   ADC_CFGR_EXTSEL_SRC(12),  /* TIM4_TRGO */
   .cfgr2        = 0U,
-  .ccr          = 6U, // ADC_CCR_DUAL_SIM
+  .ccr          = ADC_CCR_DUAL_REG_SIMULT,
   .pcsel        = ADC_SELMASK_IN10 | ADC_SELMASK_IN12,
   .ltr1         = 0x00000000U,
   .htr1         = 0x03FFFFFFU,

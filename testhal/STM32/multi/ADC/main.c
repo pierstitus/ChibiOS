@@ -31,6 +31,7 @@
 #define ADC_GRP1_BUF_DEPTH      1
 #define ADC_GRP2_BUF_DEPTH      64
 
+CC_SECTION(".ram4")
 /* Buffers are allocated with size and address aligned to the cache
    line size.*/
 #if CACHE_LINE_SIZE > 0
@@ -38,6 +39,7 @@ CC_ALIGN(CACHE_LINE_SIZE)
 #endif
 adcsample_t samples1[CACHE_SIZE_ALIGN(adcsample_t, ADC_GRP1_NUM_CHANNELS * ADC_GRP1_BUF_DEPTH)];
 
+CC_SECTION(".ram4")
 #if CACHE_LINE_SIZE > 0
 CC_ALIGN(CACHE_LINE_SIZE)
 #endif
@@ -139,6 +141,16 @@ int main(void) {
 #if defined(PORTAB_PRINT_SAMPLES1)
   PORTAB_PRINT_SAMPLES1
 #endif
+
+  chThdSleepMilliseconds(500);
+
+  adcConvert(&PORTAB_ADC1, &portab_adcgrpcfg1, samples1, ADC_GRP1_BUF_DEPTH);
+  cacheBufferInvalidate(samples1, sizeof (samples1) / sizeof (adcsample_t));
+#if defined(PORTAB_PRINT_SAMPLES1)
+  PORTAB_PRINT_SAMPLES1
+#endif
+
+  chThdSleepMilliseconds(500);
 
   /*
    * Starting PORTAB_GPT1 driver, it is used for triggering the ADC.
